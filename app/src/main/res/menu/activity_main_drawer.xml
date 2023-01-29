@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menuHome"
+            android:icon="@drawable/homeicon"
+            android:menuCategory="secondary"
+            android:title="@string/item_home" />
+
+        <item
+            android:id="@+id/feed"
+            android:icon="@drawable/feedicon"
+            android:menuCategory="secondary"
+            android:title="@string/menu_feed" />
+        <item
+            android:id="@+id/blogs"
+            android:icon="@drawable/blogicon"
+            android:menuCategory="secondary"
+            android:title="@string/menu_blogs" />
+        <item
+            android:id="@+id/noticeBoard"
+            android:icon="@drawable/noticeicon"
+            android:menuCategory="secondary"
+            android:title="@string/menu_notice_board" />
+        <item
+            android:id="@+id/mess"
+            android:icon="@drawable/messicon"
+            android:menuCategory="secondary"
+            android:title="@string/menu_menu" />
+        <item
+            android:id="@+id/explore"
+            android:icon="@drawable/exploreicon"
+            android:menuCategory="secondary"
+            android:title="@string/menu_explore" />
+        <item
+            android:id="@+id/map"
+            android:icon="@drawable/mapicon"
+            android:menuCategory="secondary"
+            android:title="@string/menu_map" />
+        <item
+            android:id="@+id/setting"
+            android:icon="@drawable/settingsicon"
+            android:menuCategory="secondary"
+            android:title="@string/menu_settings" />
+    </group>
+</menu>
