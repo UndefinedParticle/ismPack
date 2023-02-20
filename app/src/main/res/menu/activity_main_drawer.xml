@@ -13,17 +13,17 @@
             android:title="@string/item_home" />
 
         <item
-            android:id="@+id/feed"
+            android:id="@+id/menuFeed"
             android:icon="@drawable/feedicon"
             android:menuCategory="secondary"
             android:title="@string/menu_feed" />
         <item
-            android:id="@+id/blogs"
+            android:id="@+id/menuBlogs"
             android:icon="@drawable/blogicon"
             android:menuCategory="secondary"
             android:title="@string/menu_blogs" />
         <item
-            android:id="@+id/noticeBoard"
+            android:id="@+id/menuNoticeBoard"
             android:icon="@drawable/noticeicon"
             android:menuCategory="secondary"
             android:title="@string/menu_notice_board" />
@@ -38,12 +38,12 @@
             android:menuCategory="secondary"
             android:title="@string/menu_explore" />
         <item
-            android:id="@+id/map"
+            android:id="@+id/menuMap"
             android:icon="@drawable/mapicon"
             android:menuCategory="secondary"
             android:title="@string/menu_map" />
         <item
-            android:id="@+id/setting"
+            android:id="@+id/menuSetting"
             android:icon="@drawable/settingsicon"
             android:menuCategory="secondary"
             android:title="@string/menu_settings" />

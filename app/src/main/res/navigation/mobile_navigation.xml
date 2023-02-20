@@ -3,23 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/menuHome">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/menuHome"
         android:name="com.example.ismpack.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_feed"
+        android:id="@+id/menuFeed"
         android:name="com.example.ismpack.ui.Feed.FeedFragment"
         android:label="@string/feed"
         tools:layout="@layout/fragment_feed" />
 
     <fragment
-        android:id="@+id/nav_blog"
+        android:id="@+id/menuBlogs"
         android:name="com.example.ismpack.ui.Blog.BlogFragment"
         android:label="Blog"
         tools:layout="@layout/fragment_blog" />
+    <fragment
+        android:id="@+id/menuNoticeBoard"
+        android:name="com.example.ismpack.ui.NotceBoard.NoticeFragment"
+        android:label="Notice Board"
+        tools:layout="@layout/fragment_notice" />
+
+    <fragment
+        android:id="@+id/menuMap"
+        android:name="com.example.ismpack.ui.Map.MapsFragment"
+        android:label="Map"
+        tools:layout="@layout/fragment_maps" />
+
 </navigation>

@@ -1,38 +1,61 @@
 package com.example.ismpack.ui.Blog;
 
-import androidx.lifecycle.ViewModelProvider;
-
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ismpack.R;
+import com.example.ismpack.WebViewController;
+import com.example.ismpack.databinding.FragmentBlogBinding;
+
 
 public class BlogFragment extends Fragment {
+    private WebView web2;
+    private FragmentBlogBinding binding;
 
-    private BlogViewModel mViewModel;
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        BlogViewModel blogViewModel =
+                new ViewModelProvider(this).get(BlogViewModel.class);
 
-    public static BlogFragment newInstance() {
-        return new BlogFragment();
+        binding = FragmentBlogBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+
+        web2=root.findViewById(R.id.BlogWebView);
+        WebSettings webSettings2=web2.getSettings();
+        webSettings2.setJavaScriptEnabled(true);
+        web2.loadUrl("https://twitter.com/IITISM_DHANBAD?s=20&t=vF3C8UhAvkzzbqOlazqpjw");
+        if(web2.getUrl().endsWith(".pdf")){
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(web2.getUrl())));
+        } else{
+            web2.setWebViewClient(new WebViewController());
+        }
+
+
+        return root;
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_blog, container, false);
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(BlogViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
+    /*public void onBackPressed() {
+        if(web1!= null && web1.canGoBack())
+            web1.goBack();// if there is previous page open it
+        else
+            super.onBackPressed();//if there is no previous page, close app
+    }*/
 }
