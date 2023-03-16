@@ -6,8 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
+
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -21,41 +20,80 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsFragment extends Fragment {
 
-    private OnMapReadyCallback callback = new OnMapReadyCallback() {
-
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
-        @Override
-        public void onMapReady(GoogleMap googleMap) {
-            /*LatLng sydney = new LatLng(-34, 151);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
-
-            LatLng ismDhanbad = new LatLng(23.81473121008281, 86.4412115344394);
-            googleMap.addMarker(new MarkerOptions().position(ismDhanbad).title("Marker in IIT(ISM)"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(ismDhanbad));
-
-        }
-
-
-    };
+    /*private OnMapReadyCallback callback = new OnMapReadyCallback() {
+//
+//        /**
+//         * Manipulates the map once available.
+//         * This callback is triggered when the map is ready to be used.
+//         * This is where we can add markers or lines, add listeners or move the camera.
+//         * In this case, we just add a marker near Sydney, Australia.
+//         * If Google Play services is not installed on the device, the user will be prompted to
+//         * install it inside the SupportMapFragment. This method will only be triggered once the
+//         * user has installed Google Play services and returned to the app.
+//         */
+//        @Override
+//        public void onMapReady(GoogleMap googleMap) {
+//            /*LatLng sydney = new LatLng(-34, 151);
+//            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
+//
+//            LatLng ismDhanbad = new LatLng(23.81473121008281, 86.4412115344394);
+//            googleMap.addMarker(new MarkerOptions().position(ismDhanbad).title("Marker in IIT(ISM)"));
+//            googleMap.moveCamera(CameraUpdateFactory.newLatLng(ismDhanbad));
+//
+//        }
+//
+//
+//    };
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_maps, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_maps, container, false);
 
-    @Override
+        SupportMapFragment supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
+
+        supportMapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                // When map is loaded
+
+                googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                    @Override
+                    public void onMapClick(LatLng ismDhanbad) {
+
+                        ismDhanbad = new LatLng(23.81473121008281, 86.4412115344394);
+                        googleMap.addMarker(new MarkerOptions().position(ismDhanbad).title("Marker in IIT(ISM)"));
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLng(ismDhanbad));
+
+                        /*LatLng ismDhanbad = new LatLng(23.81473121008281, 86.4412115344394);
+                        //googleMap.addMarker(new MarkerOptions().position(ismDhanbad).title("Marker in IIT(ISM)"));
+                        //googleMap.moveCamera(CameraUpdateFactory.newLatLng(ismDhanbad));
+                        // When clicked on map
+                        // Initialize marker options
+                        MarkerOptions markerOptions=new MarkerOptions();
+                        // Set position of marker
+                        markerOptions.position(ismDhanbad);
+                        // Set title of marker
+                        markerOptions.title("Marker in IIT(ISM)");
+                        // Remove all marker
+                        googleMap.clear();
+                        // Animating to zoom the marker
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
+                        // Add marker on map
+                        googleMap.addMarker(markerOptions);*/
+                    }
+                });
+            }
+        });
+
+        return view;
+    }
+}
+
+/*    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         SupportMapFragment mapFragment =
@@ -64,4 +102,4 @@ public class MapsFragment extends Fragment {
             mapFragment.getMapAsync(callback);
         }
     }
-}
+}*/
