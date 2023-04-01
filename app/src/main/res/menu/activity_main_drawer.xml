@@ -33,7 +33,7 @@
             android:menuCategory="secondary"
             android:title="@string/menu_menu" />
         <item
-            android:id="@+id/explore"
+            android:id="@+id/menuExplore"
             android:icon="@drawable/exploreicon"
             android:menuCategory="secondary"
             android:title="@string/menu_explore" />

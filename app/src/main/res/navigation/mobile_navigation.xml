@@ -34,4 +34,10 @@
         android:label="Map"
         tools:layout="@layout/fragment_maps" />
 
+    <fragment
+        android:id="@+id/menuExplore"
+        android:name="com.example.ismpack.ui.Explore.ExploreFragment"
+        android:label="Explore"
+        tools:layout="@layout/fragment_explore" />
+
 </navigation>

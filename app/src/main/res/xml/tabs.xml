@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Tabs xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <tab
+        drawable="@drawable/explore_add"
+        text="Add" />
+
+
+    <tab
+        drawable="@drawable/explore_search"
+        text="Search" />
+
+
+
+</Tabs>
