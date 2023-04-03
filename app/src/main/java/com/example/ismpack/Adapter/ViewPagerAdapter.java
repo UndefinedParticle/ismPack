@@ -11,9 +11,34 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.ismpack.Fragment.MessageFragment;
 import com.example.ismpack.Fragment.NotificationFragment;
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentStateAdapter {
 
-    public ViewPagerAdapter(@NonNull FragmentManager fm) {
+
+    public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+        super(fragmentActivity);
+    }
+
+    @NonNull
+    @Override
+    public Fragment createFragment(int position) {
+        switch (position){
+            case 0:return new NotificationFragment();
+            case 1:return new MessageFragment();
+            default:return new NotificationFragment();
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return 2;
+    }
+}
+
+
+/*
+
+
+public ViewPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
 
@@ -43,6 +68,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         }
         return title;
     }
-}
 
 
+ */
