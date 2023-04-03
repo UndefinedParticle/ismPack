@@ -42,7 +42,7 @@ public class ExploreHomeAdapter extends RecyclerView.Adapter<ExploreHomeAdapter.
         holder.profile.setImageResource(model.getProfile());
         holder.postImage.setImageResource(model.getPostImage());
         holder.save.setImageResource(model.getSave());
-        holder.profileNmae.setText(model.getProfileName());
+        holder.profileName.setText(model.getProfileName());
         holder.about.setText(model.getAbout());
         holder.like.setText(model.getLike());
         holder.comment.setText(model.getComment());
@@ -58,7 +58,7 @@ public class ExploreHomeAdapter extends RecyclerView.Adapter<ExploreHomeAdapter.
     public class viewHolder extends RecyclerView.ViewHolder{
 
         ImageView profile,postImage,save;
-        TextView profileNmae,about,like,comment,share;
+        TextView profileName,about,like,comment,share;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,7 +66,7 @@ public class ExploreHomeAdapter extends RecyclerView.Adapter<ExploreHomeAdapter.
             profile = itemView.findViewById(R.id.explore_userProfile);
             postImage = itemView.findViewById(R.id.explore_post_picture);
             save = itemView.findViewById(R.id.explore_bookmark_icon);
-            profileNmae = itemView.findViewById(R.id.explore_userName);
+            profileName = itemView.findViewById(R.id.explore_userName);
             about = itemView.findViewById(R.id.explore_userAbout);
             like = itemView.findViewById(R.id.explore_post_like);
             comment = itemView.findViewById(R.id.explore_post_comment);

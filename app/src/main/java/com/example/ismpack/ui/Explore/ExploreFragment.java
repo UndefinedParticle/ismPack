@@ -46,6 +46,10 @@ public class ExploreFragment extends Fragment {
                         // Replace the fragment container with the HomeFragment
                         replaceFragment(new ExploreHomeFragment());
                         return true;
+                    case R.id.exploreNotification:
+                        // Replace the fragment container with the HomeFragment
+                        replaceFragment(new ExploreNotificationFragment());
+                        return true;
                     case R.id.exploreAdd:
                         // Replace the fragment container with the AddFragment
                         replaceFragment(new ExploreAddFragment());
