@@ -2,19 +2,9 @@ package com.example.ismpack.Models;
 
 public class Users {
 
-    String userName,admissionNo,email,pswd,userId;
+    private String userName,admissionNo,email,pswd,postItemName,postDescription,postImage;
 
-    public Users(String userName, String admissionNo, String email, String pswd, String userId) {
-        this.userName = userName;
-        this.admissionNo = admissionNo;
-        this.email = email;
-        this.pswd = pswd;
-        this.userId = userId;
-    }
 
-    public Users(){}
-
-    // Register Constructor
     public Users(String userName, String admissionNo, String email, String pswd) {
         this.userName = userName;
         this.admissionNo = admissionNo;
@@ -22,6 +12,8 @@ public class Users {
         this.pswd = pswd;
     }
 
+    public Users() {
+    }
 
     public String getUserName() {
         return userName;
@@ -55,11 +47,27 @@ public class Users {
         this.pswd = pswd;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getPostItemName() {
+        return postItemName;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setPostItemName(String postItemName) {
+        this.postItemName = postItemName;
+    }
+
+    public String getPostDescription() {
+        return postDescription;
+    }
+
+    public void setPostDescription(String postDescription) {
+        this.postDescription = postDescription;
+    }
+
+    public String getPostImage() {
+        return postImage;
+    }
+
+    public void setPostImage(String postImage) {
+        this.postImage = postImage;
     }
 }

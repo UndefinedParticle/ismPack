@@ -1,82 +1,81 @@
 package com.example.ismpack.Models;
 
 public class ExploreHomeModel {
-    int profile,postImage,save;
-    String profileName,about,like,comment,share;
+    private String postId,postItemName,postImage,postedBy,postDescription,postUserId;
+    private long postedAt;
 
-
-    public ExploreHomeModel(int profile, int postImage, int save, String profileName, String about, String like, String comment, String share) {
-        this.profile = profile;
+    public ExploreHomeModel(String postId,String postItemName, String postImage, String postedBy, String postDescription, long postedAt) {
+        this.postItemName = postItemName;
+        this.postId = postId;
         this.postImage = postImage;
-        this.save = save;
-        this.profileName = profileName;
-        this.about = about;
-        this.like = like;
-        this.comment = comment;
-        this.share = share;
+        this.postedBy = postedBy;
+        this.postDescription = postDescription;
+        this.postedAt = postedAt;
     }
 
-    public int getProfile() {
-        return profile;
+    public ExploreHomeModel() {
     }
 
-    public void setProfile(int profile) {
-        this.profile = profile;
+    public String getPostId() {
+        return postId;
     }
 
-    public int getPostImage() {
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
+
+    public String getPostImage() {
         return postImage;
     }
 
-    public void setPostImage(int postImage) {
+    public void setPostImage(String postImage) {
         this.postImage = postImage;
     }
 
-    public int getSave() {
-        return save;
+    public String getPostedBy() {
+        return postedBy;
     }
 
-    public void setSave(int save) {
-        this.save = save;
+    public void setPostedBy(String postedBy) {
+        this.postedBy = postedBy;
     }
 
-    public String getProfileName() {
-        return profileName;
+    public String getPostDescription() {
+        return postDescription;
     }
 
-    public void setProfileName(String profileName) {
-        this.profileName = profileName;
+    public void setPostDescription(String postDescription) {
+        this.postDescription = postDescription;
     }
 
-    public String getAbout() {
-        return about;
+    public long getPostedAt() {
+        return postedAt;
     }
 
-    public void setAbout(String about) {
-        this.about = about;
+    public void setPostedAt(long postedAt) {
+        this.postedAt = postedAt;
     }
 
-    public String getLike() {
-        return like;
+    public String getPostItemName() {
+        return postItemName;
     }
 
-    public void setLike(String like) {
-        this.like = like;
+    public void setPostItemName(String postItemName) {
+        this.postItemName = postItemName;
     }
 
-    public String getComment() {
-        return comment;
+    public String getPostUserId() {
+        return postUserId;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setPostUserId(String postUserId) {
+        this.postUserId = postUserId;
     }
 
-    public String getShare() {
-        return share;
-    }
 
-    public void setShare(String share) {
-        this.share = share;
-    }
+    //int profile,postImage,save;
+    //String profileName,about,like,comment,share;
+
+
+
 }

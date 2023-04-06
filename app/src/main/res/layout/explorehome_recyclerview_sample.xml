@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/explore_userProfile"
+        android:id="@+id/add_userProfile"
         android:layout_width="@dimen/_40mdp"
         android:layout_height="@dimen/_40mdp"
         android:layout_marginTop="16dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/explore_userName"
+        android:id="@+id/add_userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -26,9 +26,9 @@
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/explore_userProfile"
-        app:layout_constraintStart_toEndOf="@+id/explore_userProfile"
-        app:layout_constraintTop_toTopOf="@+id/explore_userProfile"
+        app:layout_constraintBottom_toBottomOf="@+id/add_userProfile"
+        app:layout_constraintStart_toEndOf="@+id/add_userProfile"
+        app:layout_constraintTop_toTopOf="@+id/add_userProfile"
         app:layout_constraintVertical_bias="0.19999999" />
 
     <TextView
@@ -36,16 +36,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Living a Life"
-        app:layout_constraintStart_toStartOf="@+id/explore_userName"
-        app:layout_constraintTop_toBottomOf="@+id/explore_userName" />
+        app:layout_constraintStart_toStartOf="@+id/add_userName"
+        app:layout_constraintTop_toBottomOf="@+id/add_userName" />
 
     <ImageView
         android:id="@+id/explore_more_icon"
         android:layout_width="18dp"
         android:layout_height="18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/explore_userProfile"
+        app:layout_constraintBottom_toBottomOf="@+id/add_userProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/explore_userProfile"
+        app:layout_constraintTop_toTopOf="@+id/add_userProfile"
         app:srcCompat="@drawable/explore_more" />
 
     <com.makeramen.roundedimageview.RoundedImageView
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/explore_userProfile"
+        app:layout_constraintTop_toBottomOf="@+id/add_userProfile"
         app:riv_corner_radius="15dip"
         app:riv_mutate_background="true" />
 
@@ -113,5 +113,26 @@
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/explore_post_comment"
         app:layout_constraintTop_toBottomOf="@+id/explore_post_picture" />
+
+    <TextView
+        android:id="@+id/postDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/explore_post_comment" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="#989191"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,10 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     Button registerButton,loginButton;
+    FirebaseUser currentUser;
+    private FirebaseAuth mAuth;
     TextView skp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,14 +24,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        skp=findViewById(R.id.skip);
+        /*skp=findViewById(R.id.skip);
         skp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,MainActivity2.class);
                 startActivity(intent);
             }
-        });
+        });*/
+
+        mAuth=FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+
 
         registerButton=findViewById(R.id.newRegister);
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -47,5 +57,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(currentUser != null){
+            startActivity(new Intent(MainActivity.this,HomeActivity.class));
+        }
     }
 }

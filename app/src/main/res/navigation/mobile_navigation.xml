@@ -40,4 +40,10 @@
         android:label="Explore"
         tools:layout="@layout/fragment_explore" />
 
+    <fragment
+        android:id="@+id/menuGame"
+        android:name="com.example.ismpack.ui.Game.GameFragment"
+        android:label="Fun"
+        tools:layout="@layout/fragment_game" />
+
 </navigation>

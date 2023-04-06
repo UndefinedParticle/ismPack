@@ -59,7 +59,8 @@ public class ExploreFragment extends Fragment {
                         replaceFragment(new ExploreSearchFragment());
                         return true;
                     default:
-                        return false;
+                        replaceFragment(new ExploreHomeFragment());
+                        return true;
                 }
             }
         });

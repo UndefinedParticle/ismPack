@@ -11,7 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ismpack.Models.ExploreHomeModel;
+import com.example.ismpack.Models.Users;
 import com.example.ismpack.R;
+import com.example.ismpack.databinding.ExplorehomeRecyclerviewSampleBinding;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -39,14 +46,34 @@ public class ExploreHomeAdapter extends RecyclerView.Adapter<ExploreHomeAdapter.
 
         ExploreHomeModel model = list.get(position);
 
-        holder.profile.setImageResource(model.getProfile());
-        holder.postImage.setImageResource(model.getPostImage());
-        holder.save.setImageResource(model.getSave());
-        holder.profileName.setText(model.getProfileName());
-        holder.about.setText(model.getAbout());
-        holder.like.setText(model.getLike());
-        holder.comment.setText(model.getComment());
-        holder.share.setText(model.getShare());
+        Picasso.get().load(model.getPostImage()).placeholder(R.drawable.placeholder).into(holder.binding.explorePostPicture);
+
+        String desc = model.getPostDescription();
+
+        if(desc.equals("")){
+            holder.binding.postDescription.setVisibility(View.GONE);
+        }else {
+            holder.binding.postDescription.setText(model.getPostDescription());
+            holder.binding.postDescription.setVisibility(View.VISIBLE);
+        }
+
+
+        holder.binding.exploreUserAbout.setText(model.getPostItemName());
+
+        FirebaseDatabase.getInstance().getReference().child("Users").child(model.getPostUserId()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Users user = snapshot.getValue(Users.class);
+                holder.binding.addUserName.setText(user.getUserName());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
     }
 
@@ -57,20 +84,14 @@ public class ExploreHomeAdapter extends RecyclerView.Adapter<ExploreHomeAdapter.
 
     public class viewHolder extends RecyclerView.ViewHolder{
 
-        ImageView profile,postImage,save;
-        TextView profileName,about,like,comment,share;
+            ExplorehomeRecyclerviewSampleBinding binding;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
 
-            profile = itemView.findViewById(R.id.explore_userProfile);
-            postImage = itemView.findViewById(R.id.explore_post_picture);
-            save = itemView.findViewById(R.id.explore_bookmark_icon);
-            profileName = itemView.findViewById(R.id.explore_userName);
-            about = itemView.findViewById(R.id.explore_userAbout);
-            like = itemView.findViewById(R.id.explore_post_like);
-            comment = itemView.findViewById(R.id.explore_post_comment);
-            share = itemView.findViewById(R.id.explore_post_share);
+            binding = ExplorehomeRecyclerviewSampleBinding.bind(itemView);
+
+
 
 
         }

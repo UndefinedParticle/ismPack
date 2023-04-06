@@ -32,6 +32,13 @@ public class LogInActivity extends AppCompatActivity {
 
         mAuth=FirebaseAuth.getInstance();
 
+        binding.logInPageRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LogInActivity.this,RegisterActivity.class));
+            }
+        });
+
         binding.LogInPageFinalLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,13 +59,14 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         if(mAuth.getCurrentUser() != null){
-            startActivity(new Intent(LogInActivity.this,MainActivity2.class));
+            startActivity(new Intent(LogInActivity.this,HomeActivity.class));
         }
-
-
-
-
-
     }
 }
