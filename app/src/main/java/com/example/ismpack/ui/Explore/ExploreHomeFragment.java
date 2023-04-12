@@ -64,9 +64,12 @@ public class ExploreHomeFragment extends Fragment {
         database.getReference().child("Posts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                exploreHomeList.clear();
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+
                     ExploreHomeModel post = dataSnapshot.getValue(ExploreHomeModel.class);
+
+                    post.setPostId(dataSnapshot.getKey());
 
                     exploreHomeList.add(post);
                 }

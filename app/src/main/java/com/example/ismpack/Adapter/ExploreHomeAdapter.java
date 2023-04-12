@@ -1,6 +1,7 @@
 package com.example.ismpack.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ismpack.Models.ExploreHomeModel;
 import com.example.ismpack.Models.Users;
 import com.example.ismpack.R;
+import com.example.ismpack.ViewPostActivity;
 import com.example.ismpack.databinding.ExplorehomeRecyclerviewSampleBinding;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -57,8 +61,9 @@ public class ExploreHomeAdapter extends RecyclerView.Adapter<ExploreHomeAdapter.
             holder.binding.postDescription.setVisibility(View.VISIBLE);
         }
 
-
+        holder.binding.explorePostLike.setText(model.getPostLike()+"");
         holder.binding.exploreUserAbout.setText(model.getPostItemName());
+        holder.binding.explorePostComment.setText(model.getCommentCount()+"");
 
         FirebaseDatabase.getInstance().getReference().child("Users").child(model.getPostUserId()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -72,6 +77,102 @@ public class ExploreHomeAdapter extends RecyclerView.Adapter<ExploreHomeAdapter.
 
             }
         });
+
+        FirebaseDatabase.getInstance().getReference().child("Posts").child(model.getPostId())
+                .child("likes").child(FirebaseAuth.getInstance().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            if(model.getPostLike() != 0){
+                                holder.binding.explorePostLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.red_heart, 0, 0, 0);
+
+                                holder.binding.explorePostLike.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        FirebaseDatabase.getInstance().getReference().child("Posts").child(model.getPostId())
+                                                .child("likes").child(FirebaseAuth.getInstance().getUid())
+                                                .setValue(true).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                        FirebaseDatabase.getInstance().getReference().child("Posts").child(model.getPostId()).child("postLike")
+                                                                .setValue(model.getPostLike() - 1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                    @Override
+                                                                    public void onSuccess(Void unused) {
+                                                                        holder.binding.explorePostLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.explore_like, 0, 0, 0);
+                                                                    }
+                                                                });
+                                                    }
+                                                });
+                                    }
+                                });
+                            }else {
+                                holder.binding.explorePostLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.explore_like, 0, 0, 0);
+
+                                holder.binding.explorePostLike.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        FirebaseDatabase.getInstance().getReference().child("Posts").child(model.getPostId())
+                                                .child("likes").child(FirebaseAuth.getInstance().getUid())
+                                                .setValue(true).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                        FirebaseDatabase.getInstance().getReference().child("Posts").child(model.getPostId()).child("postLike")
+                                                                .setValue(model.getPostLike() + 1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                    @Override
+                                                                    public void onSuccess(Void unused) {
+                                                                        holder.binding.explorePostLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.red_heart, 0, 0, 0);
+                                                                    }
+                                                                });
+                                                    }
+                                                });
+                                    }
+                                });
+                            }
+
+
+
+                        }else{
+                            holder.binding.explorePostLike.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    FirebaseDatabase.getInstance().getReference().child("Posts").child(model.getPostId())
+                                            .child("likes").child(FirebaseAuth.getInstance().getUid())
+                                            .setValue(true).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void unused) {
+                                                    FirebaseDatabase.getInstance().getReference().child("Posts").child(model.getPostId()).child("postLike")
+                                                            .setValue(model.getPostLike() + 1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                @Override
+                                                                public void onSuccess(Void unused) {
+                                                                    holder.binding.explorePostLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.red_heart, 0, 0, 0);
+                                                                }
+                                                            });
+                                                }
+                                            });
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+        holder.binding.explorePostComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ViewPostActivity.class);
+
+                intent.putExtra("post_Id",model.getPostId());
+                //intent.putExtra("posted_By",model.getPostedBy());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                context.startActivity(intent);
+            }
+        });
+
 
 
 

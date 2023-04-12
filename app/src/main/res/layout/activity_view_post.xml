@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewPostActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/viewPostWriteComment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/viewPost_userProfile"
+                android:layout_width="@dimen/_40mdp"
+                android:layout_height="@dimen/_40mdp"
+                android:layout_marginTop="16dp"
+                android:padding="4dp"
+                android:src="@drawable/sample_profile_picture"
+                app:civ_border_color="#FA4006"
+                app:civ_border_width="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/viewPost_userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="chiNmoy"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/viewPost_userProfile"
+                app:layout_constraintStart_toEndOf="@+id/viewPost_userProfile"
+                app:layout_constraintTop_toTopOf="@+id/viewPost_userProfile"
+                app:layout_constraintVertical_bias="0.19999999" />
+
+            <TextView
+                android:id="@+id/viewPost_userAbout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Living a Life"
+                app:layout_constraintStart_toStartOf="@+id/viewPost_userName"
+                app:layout_constraintTop_toBottomOf="@+id/viewPost_userName" />
+
+            <ImageView
+                android:id="@+id/viewPost_more_icon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewPost_userProfile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/viewPost_userProfile"
+                app:srcCompat="@drawable/explore_more" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/viewPost_picture"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_150mdp"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/explore_ism_picture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewPost_userProfile"
+                app:riv_corner_radius="15dip"
+                app:riv_mutate_background="true" />
+
+            <TextView
+                android:id="@+id/viewPost_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:drawableLeft="@drawable/explore_like"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="169"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewPost_picture" />
+
+            <TextView
+                android:id="@+id/viewPost_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:drawableLeft="@drawable/explore_comment"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="39"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/viewPost_like"
+                app:layout_constraintTop_toBottomOf="@+id/viewPost_picture" />
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/viewPost_share"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:drawableLeft="@drawable/explore_share"-->
+            <!--                android:drawablePadding="10dp"-->
+            <!--                android:gravity="center"-->
+            <!--                android:text="9"-->
+            <!--                android:textSize="20sp"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/viewPost_comment"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/viewPost_picture" />-->
+
+            <TextView
+                android:id="@+id/viewPostDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewPost_comment" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#989191"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewPostDescription" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/viewPost_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPostWriteComment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewPostWriteComment" />
+
+    <EditText
+        android:id="@+id/viewPostWriteComment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Write a comment"
+        android:inputType="textPersonName"
+        android:maxLines="2"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/viewPostSendButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/viewPostSendButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPostWriteComment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewPostWriteComment"
+        app:srcCompat="@drawable/viewpost_send_icon" />
+</androidx.constraintlayout.widget.ConstraintLayout>

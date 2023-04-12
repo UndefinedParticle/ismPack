@@ -2,7 +2,9 @@ package com.example.ismpack.Models;
 
 public class ExploreHomeModel {
     private String postId,postItemName,postImage,postedBy,postDescription,postUserId;
+    private int commentCount;
     private long postedAt;
+    private int postLike;
 
     public ExploreHomeModel(String postId,String postItemName, String postImage, String postedBy, String postDescription, long postedAt) {
         this.postItemName = postItemName;
@@ -70,6 +72,22 @@ public class ExploreHomeModel {
 
     public void setPostUserId(String postUserId) {
         this.postUserId = postUserId;
+    }
+
+    public int getPostLike() {
+        return postLike;
+    }
+
+    public void setPostLike(int postLike) {
+        this.postLike = postLike;
+    }
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
     }
 
 
