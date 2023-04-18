@@ -100,19 +100,19 @@
         app:layout_constraintStart_toEndOf="@+id/explore_post_like"
         app:layout_constraintTop_toBottomOf="@+id/explore_post_picture" />
 
-    <TextView
-        android:id="@+id/explore_post_share"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:drawableLeft="@drawable/explore_share"
-        android:drawablePadding="10dp"
-        android:gravity="center"
-        android:text="9"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/explore_post_comment"
-        app:layout_constraintTop_toBottomOf="@+id/explore_post_picture" />
+<!--    <TextView-->
+<!--        android:id="@+id/explore_post_share"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:drawableLeft="@drawable/explore_share"-->
+<!--        android:drawablePadding="10dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="9"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/explore_post_comment"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/explore_post_picture" />-->
 
     <TextView
         android:id="@+id/postDescription"

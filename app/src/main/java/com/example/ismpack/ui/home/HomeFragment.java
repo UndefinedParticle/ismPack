@@ -10,13 +10,13 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ismpack.R;
 import com.example.ismpack.WebViewController;
-import com.example.ismpack.databinding.ActivityMain2Binding;
 import com.example.ismpack.databinding.FragmentHomeBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -36,7 +36,8 @@ public class HomeFragment extends Fragment {
         web1=root.findViewById(R.id.HomeWebView);
         WebSettings webSettings1=web1.getSettings();
         webSettings1.setJavaScriptEnabled(true);
-        web1.loadUrl("https://www.iitism.ac.in/iitismnew/");
+        //https://www.iitism.ac.in/iitismnew/
+        web1.loadUrl("https://www.iitism.ac.in/");
         if(web1.getUrl().endsWith(".pdf")){
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(web1.getUrl())));
         } else{
@@ -52,6 +53,30 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+    // In your Fragment
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Enable back button callback
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        // Remove back button callback
+        callback.remove();
+    }
+
+    // Define the onBackPressed callback
+    private OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+        @Override
+        public void handleOnBackPressed() {
+            // Handle back button press
+            requireActivity().finishAffinity();
+        }
+    };
+
 
 
     /*public void onBackPressed() {
