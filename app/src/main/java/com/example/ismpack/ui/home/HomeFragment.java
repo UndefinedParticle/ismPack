@@ -1,14 +1,22 @@
 package com.example.ismpack.ui.home;
 
+import static android.content.Context.DOWNLOAD_SERVICE;
+
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieManager;
+import android.webkit.DownloadListener;
+import android.webkit.URLUtil;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -36,6 +44,14 @@ public class HomeFragment extends Fragment {
         web1=root.findViewById(R.id.HomeWebView);
         WebSettings webSettings1=web1.getSettings();
         webSettings1.setJavaScriptEnabled(true);
+
+        webSettings1.setBuiltInZoomControls(true);
+        webSettings1.setDisplayZoomControls(false);
+        webSettings1.setSupportZoom(true);
+        webSettings1.setUseWideViewPort(true);
+        webSettings1.setLoadWithOverviewMode(true);
+        web1.setInitialScale(1);
+
         //https://www.iitism.ac.in/iitismnew/
         web1.loadUrl("https://www.iitism.ac.in/");
         if(web1.getUrl().endsWith(".pdf")){
@@ -43,6 +59,30 @@ public class HomeFragment extends Fragment {
         } else{
             web1.setWebViewClient(new WebViewController());
         }
+
+        web1.setDownloadListener(new DownloadListener() {
+            public void onDownloadStart(String url, String userAgent,
+                                        String contentDisposition, String mimetype,
+                                        long contentLength) {
+                if (mimetype.equals("application/pdf")) {
+                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                    request.setMimeType(mimetype);
+                    String cookies = CookieManager.getInstance().getCookie(url);
+                    request.addRequestHeader("cookie", cookies);
+                    request.addRequestHeader("User-Agent", userAgent);
+                    request.setDescription("Downloading file...");
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimetype));
+                    request.allowScanningByMediaScanner();
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, URLUtil.guessFileName(url, contentDisposition, mimetype));
+                    DownloadManager dm = (DownloadManager) getActivity().getSystemService(DOWNLOAD_SERVICE);
+                    dm.enqueue(request);
+                    Toast.makeText(getContext().getApplicationContext(), "Downloading File", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
 
 
         return root;

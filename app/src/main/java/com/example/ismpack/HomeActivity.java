@@ -8,7 +8,10 @@ import android.view.Menu;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+
+import com.example.ismpack.Models.Users;
 import com.example.ismpack.databinding.ActivityHomeBinding;
+import com.example.ismpack.databinding.NavHeaderHomeBinding;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -22,11 +25,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends AppCompatActivity {
     FirebaseAuth auth;
+    FirebaseDatabase database;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomeBinding binding;
+    NavHeaderHomeBinding navHeaderHomeBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +48,9 @@ public class HomeActivity extends AppCompatActivity {
 
 
         auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+
+
         /*binding.appBarHome.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,6 +60,8 @@ public class HomeActivity extends AppCompatActivity {
         });*/
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -76,7 +90,8 @@ public class HomeActivity extends AppCompatActivity {
                 break;
 
             case R.id.home_settings:
-                Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(HomeActivity.this,SettingsActivity.class));
+                //Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show();
                 break;
 
         }

@@ -1,67 +1,84 @@
 package com.example.ismpack.ui.NotceBoard;
 
+import static android.content.Context.DOWNLOAD_SERVICE;
+
+import android.app.DownloadManager;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieManager;
+import android.webkit.DownloadListener;
+import android.webkit.URLUtil;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.widget.Toast;
 
 import com.example.ismpack.R;
+import com.example.ismpack.WebViewController;
+import com.example.ismpack.databinding.FragmentNoticeBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NoticeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class NoticeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    FragmentNoticeBinding binding;
+    WebView webView;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public NoticeFragment() {
-        // Required empty public constructor
-    }
-
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NoticeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NoticeFragment newInstance(String param1, String param2) {
-        NoticeFragment fragment = new NoticeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notice, container, false);
+        View view = inflater.inflate(R.layout.fragment_notice, container, false);
+
+        webView = view.findViewById(R.id.NoticeWebView);
+
+        WebSettings webSettings1=webView.getSettings();
+        webSettings1.setJavaScriptEnabled(true);
+
+        webSettings1.setBuiltInZoomControls(true);
+        webSettings1.setDisplayZoomControls(false);
+        webSettings1.setSupportZoom(true);
+        webSettings1.setUseWideViewPort(true);
+        webSettings1.setLoadWithOverviewMode(true);
+        webView.setInitialScale(1);
+
+        webView.loadUrl("https://www.iitism.ac.in/announcement");
+        if(webView.getUrl().endsWith(".pdf")){
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(webView.getUrl())));
+        } else{
+            webView.setWebViewClient(new WebViewController());
+        }
+
+        webView.setDownloadListener(new DownloadListener() {
+            public void onDownloadStart(String url, String userAgent,
+                                        String contentDisposition, String mimetype,
+                                        long contentLength) {
+                if (mimetype.equals("application/pdf")) {
+                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                    request.setMimeType(mimetype);
+                    String cookies = CookieManager.getInstance().getCookie(url);
+                    request.addRequestHeader("cookie", cookies);
+                    request.addRequestHeader("User-Agent", userAgent);
+                    request.setDescription("Downloading file...");
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimetype));
+                    request.allowScanningByMediaScanner();
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, URLUtil.guessFileName(url, contentDisposition, mimetype));
+                    DownloadManager dm = (DownloadManager) getActivity().getSystemService(DOWNLOAD_SERVICE);
+                    dm.enqueue(request);
+                    Toast.makeText(getContext().getApplicationContext(), "Downloading File", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+        return view;
     }
 }

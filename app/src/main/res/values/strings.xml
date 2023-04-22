@@ -32,4 +32,15 @@
     <string name="terrain_map">Terrain Map</string>
     <string name="someone_reacted_in_your_post">Someone reacted in your post</string>
     <string name="just_now">Just Now</string>
+    <string name="about_text">Welcome to our innovative Android application, specifically designed to cater to the needs of students who are new to college. With our app, you can confidently tackle common challenges such as lack of knowledge about professors, departmental rules, and college regulations, and make informed decisions.\n\n
+
+Created using Java and XML, our app offers a range of essential features to enhance your college experience. Stay updated with the latest achievements, tweets, LinkedIn posts, and more through our dynamic feed. Read insightful blogs written by verified users, sharing their thoughts on placements, college life, and beyond.\n\n
+
+Never miss an important notice with our notice board, keeping you informed about college-related announcements. Stay in the loop with mess timings, menu, and special events, ensuring you never go hungry. Need to buy or sell second-hand items like cycles, mattresses, or calculators? Our app allows you to connect with other users and deal with academic-related items seamlessly.\n\n
+
+Get around your college campus with ease using our college map feature, helping you navigate from one place to another effortlessly. Access important links and contacts through our quick links section, making sure you have all the information you need at your fingertips. Plus, you can provide valuable feedback, customize settings, and learn more about the app through our settings and about sections.\n\n
+
+Join us in creating an unparalleled college experience for students through our innovative Android app.</string>
+    <string name="rajiv"><b>Prof. Rajiv Shekhar(Director):</b>\nOffice:- 5201/2296601 , mail:- director@iitism.ac.in</string>
+    <string name="mritunjay"><b>Prof. Mritunjay Kr.Singh Dean (Students Welfare):</b>\nOffice:- 5205/5588  , mail:- dsw@iitism.ac.in</string>
 </resources>

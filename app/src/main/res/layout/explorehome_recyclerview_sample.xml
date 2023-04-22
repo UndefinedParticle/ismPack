@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="chiNmoy"
-        android:textColor="#000000"
+
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/add_userProfile"
@@ -35,18 +35,20 @@
         android:id="@+id/explore_userAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="#979494"
         android:text="Living a Life"
         app:layout_constraintStart_toStartOf="@+id/add_userName"
         app:layout_constraintTop_toBottomOf="@+id/add_userName" />
 
-    <ImageView
-        android:id="@+id/explore_more_icon"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/add_userProfile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/add_userProfile"
-        app:srcCompat="@drawable/explore_more" />
+<!--    <ImageView-->
+<!--        android:id="@+id/explore_more_icon"-->
+<!--        android:layout_width="18dp"-->
+<!--        android:layout_height="18dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/add_userProfile"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/add_userProfile"-->
+<!--        app:srcCompat="@drawable/explore_more" />-->
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/explore_post_picture"
@@ -62,15 +64,15 @@
         app:riv_corner_radius="15dip"
         app:riv_mutate_background="true" />
 
-    <ImageView
-        android:id="@+id/explore_bookmark_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/explore_post_picture"
-        app:layout_constraintTop_toTopOf="@+id/explore_post_picture"
-        app:srcCompat="@drawable/bookmark" />
+<!--    <ImageView-->
+<!--        android:id="@+id/explore_bookmark_icon"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/explore_post_picture"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/explore_post_picture"-->
+<!--        app:srcCompat="@drawable/bookmark" />-->
 
     <TextView
         android:id="@+id/explore_post_like"

@@ -35,7 +35,7 @@ public class FeedFragment extends Fragment {
         web2=root.findViewById(R.id.FeedWebView);
         WebSettings webSettings2=web2.getSettings();
         webSettings2.setJavaScriptEnabled(true);
-        web2.loadUrl("https://www.linkedin.com/school/iitism/posts/?feedView=all");
+        web2.loadUrl("https://www.linkedin.com/school/iitism/");
         if(web2.getUrl().endsWith(".pdf")){
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(web2.getUrl())));
         } else{

@@ -69,4 +69,11 @@ public class LogInActivity extends AppCompatActivity {
             startActivity(new Intent(LogInActivity.this,HomeActivity.class));
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity(); // This will exit the app from LoginActivity
+    }
+
+
 }

@@ -47,10 +47,6 @@
             android:icon="@drawable/game_icon"
             android:menuCategory="secondary"
             android:title="Fun" />
-        <item
-            android:id="@+id/menuSetting"
-            android:icon="@drawable/settingsicon"
-            android:menuCategory="secondary"
-            android:title="@string/menu_settings" />
+
     </group>
 </menu>

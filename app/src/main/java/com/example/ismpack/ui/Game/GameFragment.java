@@ -35,12 +35,16 @@ public class GameFragment extends Fragment {
         webView = view.findViewById(R.id.GameWebView);
         WebSettings webSettings1=webView.getSettings();
         webSettings1.setJavaScriptEnabled(true);
+
+        webSettings1.setBuiltInZoomControls(true);
+        webSettings1.setDisplayZoomControls(false);
+        webSettings1.setSupportZoom(true);
+        webSettings1.setUseWideViewPort(true);
+        webSettings1.setLoadWithOverviewMode(true);
+        webView.setInitialScale(1);
+
         webView.loadUrl("https://amansoni1.github.io/Pokem.github.io/");
-        if(webView.getUrl().endsWith(".pdf")){
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(webView.getUrl())));
-        } else{
-            webView.setWebViewClient(new WebViewController());
-        }
+
 
         return view;
     }
