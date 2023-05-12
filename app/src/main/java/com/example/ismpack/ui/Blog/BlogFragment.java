@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.ismpack.R;
 import com.example.ismpack.WebViewController;
@@ -21,6 +22,7 @@ import com.example.ismpack.databinding.FragmentBlogBinding;
 public class BlogFragment extends Fragment {
     private WebView web2;
     private FragmentBlogBinding binding;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +34,14 @@ public class BlogFragment extends Fragment {
 
 
         web2=root.findViewById(R.id.BlogWebView);
+        swipeRefreshLayout = root.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Handle the refresh action
+                web2.reload();
+            }
+        });
         WebSettings webSettings2=web2.getSettings();
         webSettings2.setJavaScriptEnabled(true);
         web2.loadUrl("https://twitter.com/IITISM_DHANBAD?s=20&t=vF3C8UhAvkzzbqOlazqpjw");

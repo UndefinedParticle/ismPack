@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.example.ismpack.WebViewController;
 public class GameFragment extends Fragment {
 
     private WebView webView;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,14 @@ public class GameFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_game, container, false);
 
         webView = view.findViewById(R.id.GameWebView);
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Handle the refresh action
+                webView.reload();
+            }
+        });
         WebSettings webSettings1=webView.getSettings();
         webSettings1.setJavaScriptEnabled(true);
 

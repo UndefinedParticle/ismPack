@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.ismpack.R;
 import com.example.ismpack.WebViewController;
@@ -22,6 +23,7 @@ import com.example.ismpack.databinding.FragmentFeedBinding;
 public class FeedFragment extends Fragment {
     private WebView web2;
     private FragmentFeedBinding binding;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -33,6 +35,14 @@ public class FeedFragment extends Fragment {
 
 
         web2=root.findViewById(R.id.FeedWebView);
+        swipeRefreshLayout = root.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Handle the refresh action
+                web2.reload();
+            }
+        });
         WebSettings webSettings2=web2.getSettings();
         webSettings2.setJavaScriptEnabled(true);
         web2.loadUrl("https://www.linkedin.com/school/iitism/");

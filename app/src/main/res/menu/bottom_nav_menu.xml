@@ -7,11 +7,11 @@
         android:menuCategory="secondary"
         android:title="@string/item_home" />
 
-    <item
-        android:id="@+id/exploreNotification"
-        android:icon="@drawable/explore_notification_icon"
-        android:menuCategory="secondary"
-        android:title="Notification" />
+<!--    <item-->
+<!--        android:id="@+id/exploreNotification"-->
+<!--        android:icon="@drawable/explore_notification_icon"-->
+<!--        android:menuCategory="secondary"-->
+<!--        android:title="Notification" />-->
 
     <item
         android:id="@+id/exploreAdd"

@@ -22,6 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="32dp"
+                android:textColor="#099383"
                 android:text="About:"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -58,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Important Contacts:"
+                android:textColor="#099383"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/textView3"
@@ -67,7 +69,7 @@
                 android:id="@+id/rajiv"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="6dp"
                 android:layout_marginEnd="5dp"
                 android:text="@string/rajiv"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -75,17 +77,49 @@
                 app:layout_constraintStart_toStartOf="@+id/importantContacts"
                 app:layout_constraintTop_toBottomOf="@+id/importantContacts" />
 
+
+            <View
+                android:id="@+id/view7"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="32dp"
+                android:background="#8F8E8E"
+                app:layout_constraintEnd_toEndOf="@+id/rajiv"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/rajiv"
+                app:layout_constraintTop_toBottomOf="@+id/rajiv" />
+
             <TextView
-                android:id="@+id/mritunjay"
+                android:id="@+id/feedBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Feedback:"
+                android:textColor="#099383"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/rajiv"
+                app:layout_constraintTop_toBottomOf="@+id/rajiv" />
+
+            <TextView
+                android:id="@+id/contactMe"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="5dp"
-                android:text="@string/mritunjay"
+                android:layout_marginBottom="10dp"
+                android:text="@string/contactwithme"
+                android:textColor="#FFC107"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/rajiv"
-                app:layout_constraintTop_toBottomOf="@+id/rajiv" />
+                app:layout_constraintStart_toStartOf="@+id/feedBack"
+                app:layout_constraintTop_toBottomOf="@+id/feedBack" />
+
+
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

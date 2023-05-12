@@ -41,6 +41,23 @@ Never miss an important notice with our notice board, keeping you informed about
 Get around your college campus with ease using our college map feature, helping you navigate from one place to another effortlessly. Access important links and contacts through our quick links section, making sure you have all the information you need at your fingertips. Plus, you can provide valuable feedback, customize settings, and learn more about the app through our settings and about sections.\n\n
 
 Join us in creating an unparalleled college experience for students through our innovative Android app.</string>
-    <string name="rajiv"><b>Prof. Rajiv Shekhar(Director):</b>\nOffice:- 5201/2296601 , mail:- director@iitism.ac.in</string>
-    <string name="mritunjay"><b>Prof. Mritunjay Kr.Singh Dean (Students Welfare):</b>\nOffice:- 5205/5588  , mail:- dsw@iitism.ac.in</string>
+    <string name="rajiv">
+        <b>Prof. Rajiv Shekhar(Director):</b>\nmail:- director@iitism.ac.in
+        \n\n<b>Prof. Mritunjay Kr.Singh Dean (Students Welfare):</b>\nmail:- dsw@iitism.ac.in
+        \n\n<b>Prof. Saurabh Dutta Gupta , Associate Dean (Hostel Management): </b>\nmail:- adhm@iitism.ac.in
+        \n\n<b>Mr. Ram Manohar (Sr. Security Officer): </b>\nmobile:- 9471193016 , mail:- sseo@iitism.ac.in
+        \n\n<b>Prof. Govind Murmu (Chief Warden of Jasper Hostel): </b>\nmobile:- 7870591443 , mail:- govind@iitism.ac.in
+        \n\n<b>Prof. Rajib Sarkar (Chief Warden of Emerald Hostel): </b>\nmobile:- 9430351282 , mail:- rajib@iitism.ac.in
+        \n\n<b>Prof. Umakanta Tripathy (Chief Warden of Amber Hostel): </b>\nmobile:- 9471192489 , mail:- utripathy@iitism.ac.in
+        \n\n<b>Prof. Gyan Prakash (Chief Warden of Topaz Hostel): </b>\nmobile:- 9771439583 , mail:- gyan@iitism.ac.in
+        \n\n<b>Prof. Sushrut Das (Chief Warden of Sapphire Hostel): </b>\nmobile:- 9430374392 , mail:- sushrut@iitism.ac.in
+        \n\n<b>Prof. Probodha Ranjan Sahoo (Chief Warden of Opal Hostel): </b>\nmobile:- 7549200242 , mail:- prabodha@iitism.ac.in
+        \n\n<b>Prof. Raj Kiran (Chief Warden of Diamond Hostel): </b>\nmobile:- 6205476743 , mail:- rajkiran@iitism.ac.in
+        \n\n<b>Prof. Renu V (Chief Warden of Rosaline/Ruby Hostel Hostel): </b>\nmobile:- 9334985363 , mail:- renuvalsala@iitism.ac.in
+        \n\n
+
+    </string>
+
+
+    <string name="contactwithme"><b>Contact with us at:</b> ismpack.help@gmail.com</string>
 </resources>

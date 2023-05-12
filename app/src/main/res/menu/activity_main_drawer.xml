@@ -28,10 +28,10 @@
             android:menuCategory="secondary"
             android:title="@string/menu_notice_board" />
         <item
-            android:id="@+id/mess"
+            android:id="@+id/menuMess"
             android:icon="@drawable/messicon"
             android:menuCategory="secondary"
-            android:title="@string/menu_menu" />
+            android:title="Mess" />
         <item
             android:id="@+id/menuExplore"
             android:icon="@drawable/exploreicon"

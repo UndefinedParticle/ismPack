@@ -22,6 +22,7 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.ismpack.R;
 import com.example.ismpack.WebViewController;
@@ -31,6 +32,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class HomeFragment extends Fragment {
     private WebView web1;
     private FragmentHomeBinding binding;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +44,15 @@ public class HomeFragment extends Fragment {
 
 
         web1=root.findViewById(R.id.HomeWebView);
+        swipeRefreshLayout = root.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Handle the refresh action
+                web1.reload();
+            }
+        });
+
         WebSettings webSettings1=web1.getSettings();
         webSettings1.setJavaScriptEnabled(true);
 

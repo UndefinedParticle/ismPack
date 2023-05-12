@@ -1,5 +1,7 @@
 package com.example.ismpack.ui.Explore;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -203,7 +205,7 @@ public class ExploreAddFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(data.getData() != null){
+        if(resultCode == RESULT_OK && data != null && data.getData() != null){
             uri = data.getData();
 
             binding.addPost.setImageURI(uri);

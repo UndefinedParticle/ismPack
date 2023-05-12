@@ -30,7 +30,7 @@
         android:background="#B7687869"
         android:ems="10"
         android:gravity="center"
-        android:hint="Email"
+        android:hint="abcd@gmail.com"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:padding="10dp"

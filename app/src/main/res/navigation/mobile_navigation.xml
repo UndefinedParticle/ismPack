@@ -46,4 +46,10 @@
         android:label="Fun"
         tools:layout="@layout/fragment_game" />
 
+    <fragment
+        android:id="@+id/menuMess"
+        android:name="com.example.ismpack.ui.Mess.MessFragment"
+        android:label="Mess"
+        tools:layout="@layout/fragment_mess" />
+
 </navigation>
