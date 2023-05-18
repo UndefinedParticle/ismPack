@@ -52,7 +52,7 @@ public class GameFragment extends Fragment {
         webSettings1.setUseWideViewPort(true);
         webSettings1.setLoadWithOverviewMode(true);
         webView.setInitialScale(1);
-
+//https://amansoni1.github.io/i_s_m_Campus.github.io/
         webView.loadUrl("https://amansoni1.github.io/Pokem.github.io/");
 
 
